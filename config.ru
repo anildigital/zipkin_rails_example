@@ -2,6 +2,13 @@
 
 require_relative 'config/environment'
 
-use ZipkinTracer::RackHandler
+config = {
+  service_name: 'Zipkin Rails Example',
+  service_port: 3000,
+  sample_rate: 1,
+  json_api_host: "http://localhost:9411"
+}
+
+use ZipkinTracer::RackHandler, config
 
 run Rails.application
